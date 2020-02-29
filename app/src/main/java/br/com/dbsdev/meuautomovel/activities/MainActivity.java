@@ -11,29 +11,58 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.dbsdev.meuautomovel.R;
 import br.com.dbsdev.meuautomovel.activities.AdicionarAbastecimentoCombustivelActivity;
+import br.com.dbsdev.meuautomovel.data.dto.Combustivel;
+import br.com.dbsdev.meuautomovel.data.repository.CombustivelRepository;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView textViewVisualizarInseridos = null;
+
+    private CombustivelRepository cRepository = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        cRepository = new CombustivelRepository( this.getApplicationContext());
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
+
+        textViewVisualizarInseridos = findViewById( R.id.visualizarInseridos);
+
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                setLista();
                 sendMessage(view);
 
                // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)  .setAction("Action", null).show();
             }
         });
+    }
+
+    private void setLista(){
+        List<Combustivel> combustiveis = cRepository.getRegistros();
+
+        String apresentar = null;
+        for( int i = 0; i < combustiveis.size(); i++)
+            apresentar += "\n" + combustiveis.get(i);
+
+
+        textViewVisualizarInseridos.setText( apresentar  );
     }
 
     public void sendMessage(View view) {
