@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AdicionarAbastecimentoCombustivelActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewOdometroTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewOdometroTotal" />
+
+            <EditText
+                android:id="@+id/editTextOdometroTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/textViewOdometroParcial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewOdometroParcial" />
+
+            <EditText
+                android:id="@+id/editTextOdometroParcial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textViewTipoCombustivel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewTipoCombustivel" />
+
+            <EditText
+                android:id="@+id/editTextTipoCombustivel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+
+
+            <TextView
+                android:id="@+id/textViewQuantidadeLitros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewQuantidadeLitros" />
+
+            <EditText
+                android:id="@+id/editTextQuantidadeLitros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+
+            <TextView
+                android:id="@+id/textCustoPorLitro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewCustoPorLitro" />
+
+            <EditText
+                android:id="@+id/editTextCustoPorLitro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+
+            <TextView
+                android:id="@+id/textViewCustoTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewCustoTotal" />
+
+            <EditText
+                android:id="@+id/editTextCustoTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/buttonAdicionarMediaConsumo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/botaoAdicionarMediaConsumo" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
