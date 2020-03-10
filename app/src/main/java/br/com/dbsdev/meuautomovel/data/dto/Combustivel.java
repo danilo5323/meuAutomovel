@@ -15,9 +15,15 @@ public class Combustivel implements Serializable {
     Float CustoTotal;
     String NomeDoPosto;
     String DataAbastecimento;
+    Float MediaConsumo;
 
+    public Float getMediaConsumo() {
+        return MediaConsumo;
+    }
 
-
+    public void setMediaConsumo(Float mediaConsumo) {
+        MediaConsumo = mediaConsumo;
+    }
 
     public Long getId() {
         return id;
@@ -32,6 +38,9 @@ public class Combustivel implements Serializable {
     }
 
     public void setOdometroTotal(Float odometroTotal) {
+
+        if(odometroTotal == null) OdometroTotal = 0f;
+
         OdometroTotal = odometroTotal;
     }
 
@@ -40,6 +49,8 @@ public class Combustivel implements Serializable {
     }
 
     public void setOdometroParcial(Long odometroParcial) {
+
+        if(odometroParcial == null) throw new NumberFormatException("odometro não pode estar vazio");
         OdometroParcial = odometroParcial;
     }
 
@@ -56,14 +67,18 @@ public class Combustivel implements Serializable {
     }
 
     public void setQuantidadeLitro(Float quantidadeLitro) {
+        if(quantidadeLitro == null) throw new NumberFormatException( "Deve ser informado a quantidade de litros abastecidos" );
         QuantidadeLitro = quantidadeLitro;
     }
 
     public Float getCustoPorLitro() {
+
         return CustoPorLitro;
     }
 
     public void setCustoPorLitro(Float custoPorLitro) {
+        if(custoPorLitro == null) throw new NumberFormatException( "Deve ser informado o custo por litro abastecido" );
+
         CustoPorLitro = custoPorLitro;
     }
 
@@ -95,7 +110,7 @@ public class Combustivel implements Serializable {
         super();
     }
 
-    public Combustivel(Long _id, Float odometroTotal, Long odometroParcial, String tipoCombustivel, Float quantidadeLitro, Float custoPorLitro, Float custoTotal, String nomeDoPosto, String dataAbastecimento) {
+    public Combustivel(Long _id, Float odometroTotal, Long odometroParcial, String tipoCombustivel, Float quantidadeLitro, Float custoPorLitro, Float custoTotal, String nomeDoPosto, String dataAbastecimento, Float mediaConsumo) {
         super();
         id = _id;
         OdometroTotal = odometroTotal;
@@ -106,12 +121,13 @@ public class Combustivel implements Serializable {
         CustoTotal = custoTotal;
         NomeDoPosto = nomeDoPosto;
         DataAbastecimento = dataAbastecimento;
+        MediaConsumo = mediaConsumo;
     }
 
     @Override
     public String toString() {
         return "Combustivel{" +
-                "_id=" + id +
+                "id=" + id +
                 ", OdometroTotal=" + OdometroTotal +
                 ", OdometroParcial=" + OdometroParcial +
                 ", TipoCombustivel='" + TipoCombustivel + '\'' +
@@ -119,7 +135,8 @@ public class Combustivel implements Serializable {
                 ", CustoPorLitro=" + CustoPorLitro +
                 ", CustoTotal=" + CustoTotal +
                 ", NomeDoPosto='" + NomeDoPosto + '\'' +
-                ", DataAbastecimento=" + DataAbastecimento +
+                ", DataAbastecimento='" + DataAbastecimento + '\'' +
+                ", MediaConsumo=" + MediaConsumo +
                 '}';
     }
 }

@@ -22,8 +22,11 @@ public class CombustivelRepository {
 
     }
 
+
     public long inserir(Combustivel senha){
         SQLiteDatabase db = helper.getWritableDatabase();
+
+        if(senha.getCustoPorLitro() == null) throw new RuntimeException( "" );
 
         ContentValues cv = new ContentValues();
         cv.put( CombustivelHelper.COLUNA_CUSTO_POR_LITRO, senha.getCustoPorLitro());
@@ -34,7 +37,7 @@ public class CombustivelRepository {
         cv.put( CombustivelHelper.COLUNA_QUANTIDADE_LITROS, senha.getQuantidadeLitro());
         cv.put( CombustivelHelper.COLUNA_NOME_POSTO , senha.getNomeDoPosto());
         cv.put( CombustivelHelper.COLUNA_DATA_ABASTECIMENTO, senha.getDataAbastecimento());
-
+        cv.put( CombustivelHelper.COLUNA_MEDIA_CONSUMO, senha.getMediaConsumo());
         Long id = db.insert(CombustivelHelper.TABELA_REGISTRO_CONSUMO, null, cv);
 
 
@@ -65,6 +68,7 @@ public class CombustivelRepository {
             Float quantidadeLitro = cursor.getFloat(cursor.getColumnIndex(CombustivelHelper.COLUNA_QUANTIDADE_LITROS ));
             String nomeDoPosto  = cursor.getString(cursor.getColumnIndex(CombustivelHelper.COLUNA_NOME_POSTO ));
             String dataAbastecimento =  cursor.getString(cursor.getColumnIndex((CombustivelHelper.COLUNA_DATA_ABASTECIMENTO)))  ;
+            Float media = Float.valueOf(cursor.getString( cursor.getColumnIndex(CombustivelHelper.COLUNA_MEDIA_CONSUMO) ));
 
             Combustivel combustivel = new Combustivel( id,
                     odometroTotal,
@@ -74,7 +78,8 @@ public class CombustivelRepository {
                     custoPorLitro,
                     custoTotal,
                     nomeDoPosto,
-                    dataAbastecimento) ;
+                    dataAbastecimento,
+                    media) ;
 
                 senhas.add(  combustivel );
         }

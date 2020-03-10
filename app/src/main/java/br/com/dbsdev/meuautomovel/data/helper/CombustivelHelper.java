@@ -18,6 +18,7 @@ public class CombustivelHelper extends SQLiteOpenHelper {
     public static final String COLUNA_CUSTO_POR_LITRO   = "CustoPorLitro";
     public static final String COLUNA_CUSTO_TOTAL       = "CustoTotal";
     public static final String COLUNA_NOME_POSTO        = "NomeDoPosto";
+    public static final String COLUNA_MEDIA_CONSUMO     =  "MediaConsumo";
     public static final String COLUNA_DATA_ABASTECIMENTO = "DataAbastecimento";
     public CombustivelHelper(Context context) {
         super(context, NOME_BANCO, null, VERSAO_BANCO);
@@ -32,6 +33,7 @@ public class CombustivelHelper extends SQLiteOpenHelper {
             COLUNA_CUSTO_POR_LITRO + " TEXT, " +
             COLUNA_CUSTO_TOTAL + " TEXT, " +
             COLUNA_DATA_ABASTECIMENTO + " TEXT, " +
+            COLUNA_MEDIA_CONSUMO + " TEXT, " +
             COLUNA_NOME_POSTO  + " TEXT);";
 
     @Override

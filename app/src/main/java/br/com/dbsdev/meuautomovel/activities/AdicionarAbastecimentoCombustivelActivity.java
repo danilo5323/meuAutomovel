@@ -43,9 +43,6 @@ public class AdicionarAbastecimentoCombustivelActivity extends AppCompatActivity
         botaoAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 Float OdometroTotal = Float.valueOf( inputOdometroTotal.getEditableText().toString());
                 Long OdometroParcial = Long.valueOf( inputOdometroParcial.getEditableText().toString());
                 String TipoCombustivel = inputTipoCombustivel.getEditableText().toString();
@@ -55,8 +52,9 @@ public class AdicionarAbastecimentoCombustivelActivity extends AppCompatActivity
                 String NomeDoPosto = inputCustoTotal.getEditableText().toString();
                 String DataAbastecimento = (new Date()).toString();
 
+                Float media = OdometroParcial / QuantidadeLitro;
                 cRepository.inserir(
-                  new Combustivel( null, OdometroTotal, OdometroParcial, TipoCombustivel, QuantidadeLitro, CustoPorLitro, CustoTotal, NomeDoPosto, DataAbastecimento)
+                  new Combustivel( null, OdometroTotal, OdometroParcial, TipoCombustivel, QuantidadeLitro, CustoPorLitro, CustoTotal, NomeDoPosto, DataAbastecimento, media)
                 );
 
                 ativarActivityVoltar(view);
