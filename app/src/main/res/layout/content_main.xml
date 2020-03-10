@@ -50,12 +50,11 @@
                 android:ems="10"
                 android:inputType="textPersonName" />
 
-            <TextView
-                android:id="@+id/visualizarInseridos"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMedia"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
+                android:layout_height="456dp" />
+
         </LinearLayout>
 
     </LinearLayout>
