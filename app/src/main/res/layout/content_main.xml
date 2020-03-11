@@ -21,28 +21,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewPosto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/postoAbastecimento" />
-
-            <EditText
-                android:id="@+id/editTextPosto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
                 android:id="@+id/textViewMediaGeral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/inputMediaConsumo" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextMediaGeral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

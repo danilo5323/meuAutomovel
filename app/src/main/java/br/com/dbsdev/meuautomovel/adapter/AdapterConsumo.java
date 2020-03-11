@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,13 +40,11 @@ public class AdapterConsumo extends  RecyclerView.Adapter<AdapterConsumo.MyViewH
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        Combustivel combustivel = mDataset.get(position);
+        Combustivel combustivel = mDataset.get( position  );
 
-
-        DecimalFormat twoPlaces = new DecimalFormat("0.00");
-
+        holder.textViewDataAbastecimento  .setText( "tipo de combustível: " + combustivel.getDataAbastecimento());
         holder.textViewTipoCombustivel  .setText( "tipo de combustível: " + combustivel.getTipoCombustivel());
-        holder.textViewCustoTotal   .setText( "custo total:  R$" +    ( combustivel.getCustoTotal()) ) ;
+        holder.textViewCustoTotal    .setText( "custo total:  R$" +    ( combustivel.getCustoTotal()) ) ;
         holder.textViewLitrosAbastecidos .setText( "litros abastecidos: " +  combustivel.getQuantidadeLitro());
         holder.textViewMeidaConsumo  .setText(     "media de consumo: " +   combustivel.getMediaConsumo() );
         holder.textViewOdometroParcial  .setText(  "odometro parcial: " +  combustivel.getOdometroParcial());
@@ -62,15 +59,16 @@ public class AdapterConsumo extends  RecyclerView.Adapter<AdapterConsumo.MyViewH
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
         TextView textViewOdometroParcial ;
         TextView textViewTipoCombustivel;
         TextView textViewLitrosAbastecidos;
         TextView textViewCustoTotal;
         TextView textViewMeidaConsumo;
+        TextView textViewDataAbastecimento;
 
         public MyViewHolder(View v) {
             super(v);
+            textViewDataAbastecimento = v.findViewById( R.id.textViewDataAbastecimentoViewHolder);
             textViewOdometroParcial = v.findViewById( R.id.textViewOdometroParcialViewHolder);
             textViewTipoCombustivel = v.findViewById( R.id.textViewTipoCombustivelViewHolder);
             textViewLitrosAbastecidos = v.findViewById( R.id.textViewLitrosAbastecidosViewHolder);
