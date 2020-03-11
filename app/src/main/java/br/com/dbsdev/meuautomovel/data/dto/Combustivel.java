@@ -8,7 +8,7 @@ public class Combustivel implements Serializable {
     Long id;
 
     Float OdometroTotal;
-    Long OdometroParcial;
+    Float OdometroParcial;
     String TipoCombustivel;
     Float QuantidadeLitro;
     Float CustoPorLitro;
@@ -39,16 +39,16 @@ public class Combustivel implements Serializable {
 
     public void setOdometroTotal(Float odometroTotal) {
 
-        if(odometroTotal == null) OdometroTotal = 0f;
+        if(odometroTotal == null) OdometroTotal = 0F;
 
         OdometroTotal = odometroTotal;
     }
 
-    public Long getOdometroParcial() {
+    public Float getOdometroParcial() {
         return OdometroParcial;
     }
 
-    public void setOdometroParcial(Long odometroParcial) {
+    public void setOdometroParcial(Float odometroParcial) {
 
         if(odometroParcial == null) throw new NumberFormatException("odometro não pode estar vazio");
         OdometroParcial = odometroParcial;
@@ -110,7 +110,7 @@ public class Combustivel implements Serializable {
         super();
     }
 
-    public Combustivel(Long _id, Float odometroTotal, Long odometroParcial, String tipoCombustivel, Float quantidadeLitro, Float custoPorLitro, Float custoTotal, String nomeDoPosto, String dataAbastecimento, Float mediaConsumo) {
+    public Combustivel(Long _id, Float odometroTotal, Float odometroParcial, String tipoCombustivel, Float quantidadeLitro, Float custoPorLitro, Float custoTotal, String nomeDoPosto, String dataAbastecimento, Float mediaConsumo) {
         super();
         id = _id;
         OdometroTotal = odometroTotal;

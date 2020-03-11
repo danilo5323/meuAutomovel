@@ -1,5 +1,6 @@
 package br.com.dbsdev.meuautomovel.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Date;
@@ -21,7 +23,6 @@ import br.com.dbsdev.meuautomovel.data.repository.CombustivelRepository;
 public class AdicionarAbastecimentoCombustivelActivity extends AppCompatActivity {
 
     private CombustivelRepository cRepository = null;
-
     private EditText inputOdometroTotal = null;
     private EditText inputOdometroParcial = null;
     private EditText inputTipoCombustivel = null;
@@ -30,7 +31,6 @@ public class AdicionarAbastecimentoCombustivelActivity extends AppCompatActivity
     private EditText inputCustoTotal = null;
     private EditText inputNomeDoPosto = null;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_abastecimento_combustivel);
@@ -43,21 +43,55 @@ public class AdicionarAbastecimentoCombustivelActivity extends AppCompatActivity
         botaoAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Float OdometroTotal = Float.valueOf( inputOdometroTotal.getEditableText().toString());
-                Long OdometroParcial = Long.valueOf( inputOdometroParcial.getEditableText().toString());
-                String TipoCombustivel = inputTipoCombustivel.getEditableText().toString();
-                Float QuantidadeLitro =  Float.valueOf(inputQuantidadeLitro.getEditableText().toString());
-                Float CustoPorLitro =Float.valueOf( inputCustoPorLitro.getEditableText().toString());
-                Float CustoTotal = Float.valueOf(inputCustoTotal.getEditableText().toString());
-                String NomeDoPosto = inputCustoTotal.getEditableText().toString();
-                String DataAbastecimento = (new Date()).toString();
 
-                Float media = OdometroParcial / QuantidadeLitro;
-                cRepository.inserir(
-                  new Combustivel( null, OdometroTotal, OdometroParcial, TipoCombustivel, QuantidadeLitro, CustoPorLitro, CustoTotal, NomeDoPosto, DataAbastecimento, media)
-                );
+                try {
+                    Boolean faltaAlgumCampo = false;
 
-                ativarActivityVoltar(view);
+                    String velueOdometroTotal = inputOdometroTotal.getEditableText().toString();
+                    if (velueOdometroTotal.isEmpty())
+                        throw new RuntimeException(" campo Odometro total não foi informado");
+                    Float odometroTotal = Float.valueOf(velueOdometroTotal);
+
+                    String valueOdometroParcial = inputOdometroParcial.getEditableText().toString();
+                    if (valueOdometroParcial.isEmpty())
+                        throw new RuntimeException( "odometro parcial não foi informado");
+                    Float odometroParcial = Float.valueOf(valueOdometroParcial);
+
+
+                    String tipoCombustivel = inputTipoCombustivel.getEditableText().toString();
+                    if (tipoCombustivel.isEmpty()) throw new RuntimeException( "tipo de combustivel não foi informado");
+
+                    String valueQuantidadeLitro = inputQuantidadeLitro.getEditableText().toString();
+                    if (valueQuantidadeLitro.isEmpty()) throw new RuntimeException( "quantidade de litros abastecidos não foi informado");
+                    Float quantidadeLitro = Float.valueOf(valueQuantidadeLitro);
+
+                    String valueCustoPorLitro = inputCustoPorLitro.getEditableText().toString();
+                    if (valueCustoPorLitro.isEmpty()) throw new RuntimeException( "custo por litro abastecidos não foi informado");
+                    Float custoPorLitro = Float.valueOf(valueCustoPorLitro);
+
+                    String valueCustoTotal = inputCustoTotal.getEditableText().toString();
+                    if (valueCustoTotal.isEmpty()) throw new RuntimeException( "custo total abastecidos não foi informado");
+                    Float custoTotal = Float.valueOf(valueCustoTotal);
+
+
+                    String nomeDoPosto = inputCustoTotal.getEditableText().toString();
+                    if (nomeDoPosto.isEmpty())throw new RuntimeException( "nome do posto abastecidos não foi informado");
+
+                    String dataAbastecimento = (new Date()).toString();
+
+
+                    Float media = odometroParcial / quantidadeLitro;
+
+
+                    cRepository.inserir(
+                            new Combustivel(null, odometroTotal, odometroParcial, tipoCombustivel, quantidadeLitro, custoPorLitro, custoTotal, nomeDoPosto, dataAbastecimento, media)
+                    );
+
+                    ativarActivityVoltar(view);
+                }catch
+                (RuntimeException e) {
+                    Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG)  .setAction("Action", null).show();
+                }
 
                 // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)  .setAction("Action", null).show();
             }

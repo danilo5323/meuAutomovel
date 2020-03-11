@@ -17,6 +17,19 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textViewPosto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/postoAbastecimento" />
+
+            <EditText
+                android:id="@+id/editTextPosto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
                 android:id="@+id/textViewOdometroTotal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

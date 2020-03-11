@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.dbsdev.meuautomovel.R;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CombustivelRepository cRepository = null;
 
+    private TextView viewMediaGeral = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         cRepository = new CombustivelRepository( this.getApplicationContext());
 
         setContentView(R.layout.activity_main);
+
+        viewMediaGeral = findViewById( R.id.textViewMediaGeral);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -65,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewMedia.setLayoutManager(layoutManager);
         recyclerViewMedia.setHasFixedSize(true);
 
-
         recyclerViewMedia.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-
 
         recyclerViewMedia.setAdapter(adapter);
 
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         setLista();
+        setCamposValor();
     }
 
     @Override
@@ -92,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         setLista();
+        setCamposValor();
         return true;
     }
 
@@ -108,5 +114,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setCamposValor(){
+        String media = "media geral de consumo: 40 km/l";
+        viewMediaGeral.setText( media );
     }
 }

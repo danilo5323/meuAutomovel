@@ -51,7 +51,7 @@ public class CombustivelRepository {
     public List<Combustivel> getRegistros( ){
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        String sql  = "SELECT * FROM " + CombustivelHelper.TABELA_REGISTRO_CONSUMO;
+        String sql  = "SELECT * FROM " + CombustivelHelper.TABELA_REGISTRO_CONSUMO + " ORDER BY " + CombustivelHelper.COLUNA_ID +" DESC";
 
         List<Combustivel> senhas = new ArrayList<>();
 
@@ -63,7 +63,7 @@ public class CombustivelRepository {
             Float custoPorLitro = cursor.getFloat(cursor.getColumnIndex( CombustivelHelper.COLUNA_CUSTO_POR_LITRO));
             Float custoTotal = cursor.getFloat(cursor.getColumnIndex( CombustivelHelper.COLUNA_CUSTO_TOTAL));
             Float odometroTotal = cursor.getFloat(cursor.getColumnIndex(CombustivelHelper.COLUNA_ODOMETRO_TOTAL ));
-            Long odometroParcial = cursor.getLong(cursor.getColumnIndex(CombustivelHelper.COLUNA_ODOMETRO_PARCIAL ));
+            Float odometroParcial = cursor.getFloat(cursor.getColumnIndex(CombustivelHelper.COLUNA_ODOMETRO_PARCIAL ));
             String tipoCombustivel = cursor.getString(cursor.getColumnIndex(CombustivelHelper.COLUNA_TIPO_COMBUSTIVEL ));
             Float quantidadeLitro = cursor.getFloat(cursor.getColumnIndex(CombustivelHelper.COLUNA_QUANTIDADE_LITROS ));
             String nomeDoPosto  = cursor.getString(cursor.getColumnIndex(CombustivelHelper.COLUNA_NOME_POSTO ));
