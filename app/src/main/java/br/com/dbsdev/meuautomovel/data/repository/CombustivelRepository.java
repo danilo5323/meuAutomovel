@@ -48,12 +48,40 @@ public class CombustivelRepository {
         return id;
     }
 
+    public Float getMedia(){
+
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Float media = 0.0F;
+
+        String sql  =
+                "SELECT * FROM " + CombustivelHelper.TABELA_REGISTRO_CONSUMO +
+                        " ORDER BY "
+                        + CombustivelHelper.COLUNA_ID +
+                        " DESC";
+
+
+
+        String[] argumentos = null;
+        Cursor cursor = db.rawQuery(sql, argumentos);
+
+
+
+        Float odometroParcial = 0F;
+        Float quantidadeLitro =  0F;
+        while(cursor.moveToNext()) {
+            odometroParcial += cursor.getFloat(cursor.getColumnIndex(CombustivelHelper.COLUNA_ODOMETRO_PARCIAL ));
+            quantidadeLitro += cursor.getFloat(cursor.getColumnIndex(CombustivelHelper.COLUNA_QUANTIDADE_LITROS ));
+        }
+        return odometroParcial / quantidadeLitro;
+    }
+
     public List<Combustivel> getRegistros( ){
         SQLiteDatabase db = helper.getReadableDatabase();
 
         String sql  = "SELECT * FROM " + CombustivelHelper.TABELA_REGISTRO_CONSUMO + " ORDER BY " + CombustivelHelper.COLUNA_ID +" DESC";
 
         List<Combustivel> senhas = new ArrayList<>();
+
 
         String[] argumentos = null;
         Cursor cursor = db.rawQuery(sql, argumentos);
@@ -67,7 +95,7 @@ public class CombustivelRepository {
             String tipoCombustivel = cursor.getString(cursor.getColumnIndex(CombustivelHelper.COLUNA_TIPO_COMBUSTIVEL ));
             Float quantidadeLitro = cursor.getFloat(cursor.getColumnIndex(CombustivelHelper.COLUNA_QUANTIDADE_LITROS ));
             String nomeDoPosto  = cursor.getString(cursor.getColumnIndex(CombustivelHelper.COLUNA_NOME_POSTO ));
-            String dataAbastecimento =  cursor.getString(cursor.getColumnIndex((CombustivelHelper.COLUNA_DATA_ABASTECIMENTO)))  ;
+            String dataAbastecimento =  cursor.getString(cursor.getColumnIndex((CombustivelHelper.COLUNA_DATA_ABASTECIMENTO)));
             Float media = Float.valueOf(cursor.getString( cursor.getColumnIndex(CombustivelHelper.COLUNA_MEDIA_CONSUMO) ));
 
             Combustivel combustivel = new Combustivel( id,

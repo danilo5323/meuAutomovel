@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.Arrays;
 import java.util.List;
 
 import br.com.dbsdev.meuautomovel.R;
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setCamposValor(){
-        String media = "media geral de consumo: 40 km/l";
+        String media = "media geral de consumo: " + cRepository.getMedia() + "km/L";
         viewMediaGeral.setText( media );
     }
 }
