@@ -2,31 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="35px"
+    android:orientation="vertical"
+    android:outlineAmbientShadowColor="@color/cardview_dark_background"
+    android:outlineSpotShadowColor="@color/cardview_dark_background">
 
     <TextView
         android:id="@+id/textViewMediaViewHolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="media geral"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textViewDataAbastecimentoViewHolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="data do abastecimento"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:scrollbarStyle="insideOverlay">
 
         <TextView
             android:id="@+id/textViewTipoCombustivelViewHolder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:scrollbarStyle="outsideInset"
+            android:text="TextView"
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/textViewOdometroParcialViewHolder"

@@ -7,7 +7,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import br.com.dbsdev.meuautomovel.R;
@@ -42,11 +44,15 @@ public class AdapterConsumo extends  RecyclerView.Adapter<AdapterConsumo.MyViewH
 
         Combustivel combustivel = mDataset.get( position  );
 
-        holder.textViewDataAbastecimento  .setText( "tipo de combustível: " + combustivel.getDataAbastecimento());
-        holder.textViewTipoCombustivel  .setText( "tipo de combustível: " + combustivel.getTipoCombustivel());
-        holder.textViewCustoTotal    .setText( "custo total:  R$" +    ( combustivel.getCustoTotal()) ) ;
-        holder.textViewLitrosAbastecidos .setText( "litros abastecidos: " +  combustivel.getQuantidadeLitro());
-        holder.textViewMeidaConsumo  .setText(     "media de consumo: " +   combustivel.getMediaConsumo() );
+        String data =  combustivel.getDataAbastecimento();
+
+
+       // data =
+        holder.textViewDataAbastecimento  .setText( "data do abastecimento: " + data);
+        holder.textViewTipoCombustivel  .setText( "combustivel: " + combustivel.getTipoCombustivel());
+        holder.textViewCustoTotal    .setText( "total:  R$" +    ( combustivel.getCustoTotal()) ) ;
+        holder.textViewLitrosAbastecidos .setText( "litros: " +  combustivel.getQuantidadeLitro());
+        holder.textViewMeidaConsumo  .setText(     "media: " +   combustivel.getMediaConsumo() );
         holder.textViewOdometroParcial  .setText(  "odometro parcial: " +  combustivel.getOdometroParcial());
 
     }

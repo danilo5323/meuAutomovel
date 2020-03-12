@@ -14,6 +14,7 @@ import android.widget.EditText;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import br.com.dbsdev.meuautomovel.R;
@@ -77,7 +78,12 @@ public class AdicionarAbastecimentoCombustivelActivity extends AppCompatActivity
                     String nomeDoPosto = inputCustoTotal.getEditableText().toString();
                     if (nomeDoPosto.isEmpty())throw new RuntimeException( "nome do posto abastecidos não foi informado");
 
-                    String dataAbastecimento = (new Date()).toString();
+
+
+
+                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                    String save = format.format(new Date());
+                    String dataAbastecimento = save;
 
 
                     Float media = odometroParcial / quantidadeLitro;
@@ -97,9 +103,6 @@ public class AdicionarAbastecimentoCombustivelActivity extends AppCompatActivity
             }
         });
     }
-
-
-
 
     public  void ativarActivityVoltar(View view){
         finish();
