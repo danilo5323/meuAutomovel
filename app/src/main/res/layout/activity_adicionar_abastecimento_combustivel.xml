@@ -16,99 +16,104 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewPosto"
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/postoAbastecimento" />
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextPosto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/postoAbastecimento"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/editTextPosto"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextOdometroTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:hint="@string/textViewOdometroTotal"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textViewOdometroTotal"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/textViewOdometroTotal" />
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextOdometroParcial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/textViewOdometroParcial"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/editTextOdometroTotal"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number" />
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextTipoCombustivel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/textViewTipoCombustivel"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textViewOdometroParcial"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/textViewOdometroParcial" />
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextQuantidadeLitros"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/textViewQuantidadeLitros"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/editTextOdometroParcial"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberDecimal" />
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextCustoPorLitro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/textViewCustoPorLitro"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textViewTipoCombustivel"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/textViewTipoCombustivel" />
-
-            <EditText
-                android:id="@+id/editTextTipoCombustivel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text" />
-
-
-            <TextView
-                android:id="@+id/textViewQuantidadeLitros"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/textViewQuantidadeLitros" />
-
-            <EditText
-                android:id="@+id/editTextQuantidadeLitros"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberDecimal" />
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextCustoTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/textViewCustoTotal"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <TextView
-                android:id="@+id/textCustoPorLitro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/textViewCustoPorLitro" />
-
-            <EditText
-                android:id="@+id/editTextCustoPorLitro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberDecimal" />
-
-
-            <TextView
-                android:id="@+id/textViewCustoTotal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/textViewCustoTotal" />
-
-            <EditText
-                android:id="@+id/editTextCustoTotal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberDecimal" />
 
             <Button
                 android:id="@+id/buttonAdicionarMediaConsumo"
