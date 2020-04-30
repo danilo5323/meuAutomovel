@@ -25,9 +25,6 @@ public class Consumo implements Serializable {
   private BigDecimal custoTotal;
   private String nomePosto;
 
-  @JsonIgnore
-  private Veiculo veiculo;
-  
   public Consumo() {
     super();
   }
@@ -35,7 +32,7 @@ public class Consumo implements Serializable {
 
   public Consumo(Long id, String dataAbastecimento, BigDecimal precoCombustivel, Double mediaConsumoParcial,
       Double mediaGeral10Dias, Double mediaConsumo, String tipoCombustivel, Double custoPorKm, BigDecimal custoTotal,
-      String nomePosto, Double quantidadeLitros, Long odometroParcial, Veiculo veiculo) {
+      String nomePosto, Double quantidadeLitros, Long odometroParcial ) {
     super();
     this.id = id;
     this.dataAbastecimento = dataAbastecimento;
@@ -47,21 +44,12 @@ public class Consumo implements Serializable {
     this.custoPorKm = custoPorKm;
     this.custoTotal = custoTotal;
     this.nomePosto = nomePosto;
-    this.veiculo = veiculo;
     this.quantidadeLitros = quantidadeLitros;
     this.odometroParcial = odometroParcial;
 
   }
 
 
-  public Veiculo getVeiculo() {
-    return veiculo;
-  }
-
-  public Consumo setVeiculo(Veiculo veiculo) {
-    this.veiculo = veiculo;
-    return this;
-  }
 
   public void setQuantidadeLitros(Double quantidadeLitros) {
     this.quantidadeLitros = quantidadeLitros;
@@ -159,14 +147,24 @@ public class Consumo implements Serializable {
     this.nomePosto = nomePosto;
   }
 
+
   @Override
   public String toString() {
-    return "Consumo [id=" + id + ", dataAbastecimento=" + dataAbastecimento + ", precoCombustivel=" + precoCombustivel
-        + ", mediaConsumoParcial=" + mediaConsumoParcial + ", mediaGeral10Dias=" + mediaGeral10Dias + ", mediaConsumo="
-        + mediaConsumo + ", tipoCombustivel=" + tipoCombustivel + ", custoPorKm=" + custoPorKm + ", custoTotal="
-        + custoTotal + ", nomePosto=" + nomePosto + ", veiculo=" + veiculo + "]";
+    return "Consumo{" +
+            "id=" + id +
+            ", dataAbastecimento='" + dataAbastecimento + '\'' +
+            ", precoCombustivel=" + precoCombustivel +
+            ", quantidadeLitros=" + quantidadeLitros +
+            ", mediaConsumoParcial=" + mediaConsumoParcial +
+            ", mediaGeral10Dias=" + mediaGeral10Dias +
+            ", mediaConsumo=" + mediaConsumo +
+            ", tipoCombustivel='" + tipoCombustivel + '\'' +
+            ", custoPorKm=" + custoPorKm +
+            ", odometroParcial=" + odometroParcial +
+            ", custoTotal=" + custoTotal +
+            ", nomePosto='" + nomePosto + '\'' +
+            '}';
   }
-
 
   @Override
   public int hashCode() {

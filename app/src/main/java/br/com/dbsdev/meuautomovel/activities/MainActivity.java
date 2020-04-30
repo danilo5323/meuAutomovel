@@ -3,6 +3,7 @@ package br.com.dbsdev.meuautomovel.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -43,8 +45,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        Button fab =   (Button) findViewById(R.id.fab);
 
+        Button button = (Button) findViewById(R.id.buttonInsert);
         recyclerViewMedia = findViewById( R.id.recyclerViewMedia);
 
 
@@ -52,12 +55,17 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 sendMessage(view);
-
-               // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)  .setAction("Action", null).show();
             }
         });
+
+        button.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+                                          carregarServico(view);
+                                       }
+                                  }
+        );
     }
 
     private void setLista(){
@@ -76,9 +84,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
-        Intent intent = new Intent(this,
-                 // AdicionarAbastecimentoCombustivelActivity.class);
-                ConsumoExternoTesteActivity.class);
+        Intent intent = new Intent(this, AdicionarAbastecimentoCombustivelActivity.class);
+        intent.putExtra(Intent.EXTRA_REFERRER, "carregando");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+    }
+
+    public void carregarServico(View view) {
+        Intent intent = new Intent(this, ConsumoExternoTesteActivity.class);
         intent.putExtra(Intent.EXTRA_REFERRER, "carregando");
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);

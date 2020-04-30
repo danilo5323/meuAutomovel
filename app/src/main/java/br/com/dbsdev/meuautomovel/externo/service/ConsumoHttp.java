@@ -27,8 +27,8 @@ public class ConsumoHttp {
         return listaRetorno;
     }
 
-    public static Consumo inserirConsumo(String placa, Consumo consumo){
-        Consumo listaRetorno = salvarConsumo(CONSUMO_URL_HTTP, consumo);
+    public static Long inserirConsumo(String placa, Consumo consumo){
+        Long listaRetorno = salvarConsumo(CONSUMO_URL_HTTP+ "/" + placa, consumo);
         return listaRetorno;
     }
 
@@ -38,9 +38,15 @@ public class ConsumoHttp {
         return Arrays.asList( response.getBody() );
     }
 
-    private static Consumo salvarConsumo(String enderecoWeb, Consumo consumo){
+    private static Long salvarConsumo(String enderecoWeb, Consumo consumo){
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Consumo> response = restTemplate.postForEntity(enderecoWeb, consumo, Consumo.class);
-        return response.getBody();
+        try {
+            ResponseEntity<Long> response = restTemplate.postForEntity(enderecoWeb, consumo, Long.class);
+            return response.getBody();
+        }catch(Exception e){
+            System.out.println(e.getStackTrace());
+        }
+        return null;
+
     }
 }
