@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView viewMediaGeral = null;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cRepository = new CombustivelRepository( this.getApplicationContext());
@@ -77,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
-        Intent intent = new Intent(this, AdicionarAbastecimentoCombustivelActivity.class);
+        Intent intent = new Intent(this,
+                 // AdicionarAbastecimentoCombustivelActivity.class);
+                ConsumoExternoTesteActivity.class);
         intent.putExtra(Intent.EXTRA_REFERRER, "carregando");
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);

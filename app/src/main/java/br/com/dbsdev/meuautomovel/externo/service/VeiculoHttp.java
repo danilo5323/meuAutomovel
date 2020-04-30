@@ -4,9 +4,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
 import java.util.List;
 
-import br.com.dbsdev.meuautomovel.externo.APITask;
 import br.com.dbsdev.meuautomovel.externo.service.model.Veiculo;
 
 public class VeiculoHttp {
@@ -19,8 +22,14 @@ public class VeiculoHttp {
     }
 
     public static List<Veiculo> carregarVeiculos(){
-        List<Veiculo> listaRetorno = APITask.downloadString(VEICULOS_URL_HTTP);
+        List<Veiculo> listaRetorno = downloadVeiculos(VEICULOS_URL_HTTP);
         return listaRetorno;
+    }
+
+    public static List<Veiculo> downloadVeiculos(String enderecoWeb){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Veiculo[]> response = restTemplate.getForEntity(enderecoWeb, Veiculo[].class);
+        return Arrays.asList( response.getBody() );
     }
 
 }

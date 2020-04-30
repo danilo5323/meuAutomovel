@@ -32,12 +32,10 @@ public class RestTemplateSingleton {
         restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
     }
 
-
     public static RestTemplateSingleton getInstance(Context context) {
         if ( restTemplateSingleton == null ) {
             restTemplateSingleton = new RestTemplateSingleton(context);
         }
-
         return restTemplateSingleton;
     }
 

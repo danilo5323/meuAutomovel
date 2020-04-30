@@ -12,14 +12,16 @@ public class Consumo implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private Long id;
-  @JsonFormat(pattern = "dd/MM/yyyy")
-  private LocalDate dataAbastecimento;
+
+  private String dataAbastecimento;
   private BigDecimal precoCombustivel;
+  private Double quantidadeLitros;
   private Double mediaConsumoParcial;
   private Double mediaGeral10Dias;
   private Double mediaConsumo;
   private String tipoCombustivel;
   private Double custoPorKm;
+  private Long odometroParcial;
   private BigDecimal custoTotal;
   private String nomePosto;
 
@@ -31,9 +33,9 @@ public class Consumo implements Serializable {
   }
  
 
-  public Consumo(Long id, LocalDate dataAbastecimento, BigDecimal precoCombustivel, Double mediaConsumoParcial,
+  public Consumo(Long id, String dataAbastecimento, BigDecimal precoCombustivel, Double mediaConsumoParcial,
       Double mediaGeral10Dias, Double mediaConsumo, String tipoCombustivel, Double custoPorKm, BigDecimal custoTotal,
-      String nomePosto, Veiculo veiculo) {
+      String nomePosto, Double quantidadeLitros, Long odometroParcial, Veiculo veiculo) {
     super();
     this.id = id;
     this.dataAbastecimento = dataAbastecimento;
@@ -46,6 +48,9 @@ public class Consumo implements Serializable {
     this.custoTotal = custoTotal;
     this.nomePosto = nomePosto;
     this.veiculo = veiculo;
+    this.quantidadeLitros = quantidadeLitros;
+    this.odometroParcial = odometroParcial;
+
   }
 
 
@@ -58,6 +63,22 @@ public class Consumo implements Serializable {
     return this;
   }
 
+  public void setQuantidadeLitros(Double quantidadeLitros) {
+    this.quantidadeLitros = quantidadeLitros;
+  }
+
+  public void setOdometroParcial(Long odometroParcial) {
+    this.odometroParcial = odometroParcial;
+  }
+
+  public Double getQuantidadeLitros() {
+    return quantidadeLitros;
+  }
+
+  public Long getOdometroParcial() {
+    return odometroParcial;
+  }
+
   public Long getId() {
     return id;
   }
@@ -66,11 +87,11 @@ public class Consumo implements Serializable {
     this.id = id;
   }
 
-  public LocalDate getDataAbastecimento() {
+  public String getDataAbastecimento() {
     return dataAbastecimento;
   }
 
-  public void setDataAbastecimento(LocalDate dataAbastecimento) {
+  public void setDataAbastecimento(String dataAbastecimento) {
     this.dataAbastecimento = dataAbastecimento;
   }
 
